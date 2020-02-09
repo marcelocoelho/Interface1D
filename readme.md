@@ -126,24 +126,25 @@ Breaking your game logic into several states and connecting them into a state ma
 
 The state machine for the 1D Interface looks like this:
 
+
 ```
-                   ┌───────────────┐           
-             ┌────▶│     PLAY      │           
-             │     └───────────────┘           
-             │             │                   
-             │             │ Collision         
-             │             │                   
-             │             ▼                   
-             │     ┌───────────────┐           
-  key = "R"  │     │   COLLISION   │           
-             │     └───────────────┘           
-             │             │                   
-             │             │  Score > Max Score
-             │             │                   
-             │             ▼                   
-             │     ┌───────────────┐           
-             └─────│     SCORE     │           
-                   └───────────────┘                             
+                   ┌───────────────┐            
+           ┌──────▶│     PLAY      │            
+           │       └───────────────┘            
+           │             │   ▲                  
+           │             │   │                  
+           │   Collision │   │ Score < Max Score
+           │             ▼   │                  
+           │       ┌───────────────┐            
+ key = "R" │       │   COLLISION   │            
+           │       └───────────────┘            
+           │               │                    
+           │               │ Score >= Max Score 
+           │               │                    
+           │               ▼                    
+           │       ┌───────────────┐            
+           └───────│     SCORE     │            
+                   └───────────────┘            
 ```
 
 It uses a switch statement to breakdown each individual state. The switch (and current state) is called every single a frame from the main **draw()** function.
