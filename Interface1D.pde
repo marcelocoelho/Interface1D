@@ -51,6 +51,8 @@ void setup() {
   
   animation = Gif.getPImages(this, "Animation.gif");
    
+  startSerial();    // initiating the serial port so we can communicate with joystick
+  
 }
 
 
