@@ -86,9 +86,10 @@ void executeJoystickInput(int _joyX, int _joyY, int _button) {
    
    
    if(_button == 255) {
-     gameState = "PLAY";                      // if button has been pressed, go back to PLAY state. (only works in SCORE state)
+     if (gameState != "PLAY") {
+       gameState = "PLAY";                      // if button has been pressed, go back to PLAY state. (only works in SCORE state)
+     }
    }
-  
 }
     
     

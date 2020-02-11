@@ -83,6 +83,9 @@ class Controller {
         playerOne.score = 0;
         playerTwo.score = 0;
         
+        // put the target somewhere else, so we don't restart the game with player and target in the same place
+        target.position = int(random(1,30));
+        
         //light up w winner color by populating all pixels in buffer with their color
         display.setAllPixels(score.scoreColor);        
             
