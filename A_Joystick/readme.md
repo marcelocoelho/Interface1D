@@ -2,7 +2,7 @@
 
 ## Instructions
 
-###Arduino IDE
+### Arduino IDE
 
 1. Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software)
 2. Double check that the right Arduino settings are selected. Under **Tools**:
@@ -15,7 +15,7 @@
 4. If you are having problems, you might need to update the CH340 serial driver. [Instructions here](https://learn.sparkfun.com/tutorials/how-to-install-ch340-drivers/all#drivers-if-you-need-them).
 5. Once you are sure your Arduino is programmable move on to the next step.
 
-###Build Your Joystick
+### Build Your Joystick
 
 1. It's time to solder the header pins to the Arduino board. Place the headers in the breadboard and use the breadboard itself to align the pins to Arduino. Solder them.  
 2. Wire up switch like this:
