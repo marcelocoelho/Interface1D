@@ -1,9 +1,9 @@
 // Tutorial here: https://www.brainy-bits.com/arduino-joystick-tutorial/
 
 
-#define INPUTX A0
-#define INPUTY A1
-#define INPUTSW A2
+#define INPUTX A3
+#define INPUTY A2
+#define INPUTSW 3
 
 
 int sensorX = 0;    
