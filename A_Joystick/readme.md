@@ -55,7 +55,7 @@
 
 9. Run **A_JoystickModule**  to make sure the joystick was wired correctly. You can look at the serial monitor for changing values.
 10. If you ever unsure if you are having a problem with your code or with the electronics, you can return to this basic Helper apps to test your hardware.
-11. Once everything has been wired, run A_Joystick and P_Joystick to play the game using either the joystick or the keyboard.
+11. Once everything has been wired, run A_Joystick and P_Interface1D to play the game using either the joystick or the keyboard.
 
 ## Add a Second Player 
 
