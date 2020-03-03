@@ -12,16 +12,23 @@
 // Setup a RoraryEncoder for pins A0 and A1:
 RotaryEncoder encoder(A0, A1);
 
+const int ledPin = LED_BUILTIN;
+
+
 void setup()
 {
   Serial.begin(57600);
   Serial.println("Serial Ready");
 
- // Join I2C bus as slave with address 8
-  Wire.begin(0x08);
-  Wire.onRequest(requestEvent);
+ // Join I2C bus as slave with address 10
+  Wire.begin(0x10);
+  Wire.onRequest(requestEvent);   // transmits data from hub
+  Wire.onReceive(receiveEvent);   // receives data from hub
   Serial.println("i2c Ready");
 
+  // Setup pin 13 as output and turn LED off
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, LOW);
   
 } 
 
@@ -36,7 +43,7 @@ void loop()
   encoder.tick();
 
   newPos = encoder.getPosition();
-  Serial.println(newPos);
+  //Serial.println(newPos);       // to check encoder is working
   /*if (pos != newPos) {
     Serial.print(newPos);
     Serial.println();
@@ -59,9 +66,7 @@ void requestEvent() {
     pos = newPos;
   } 
 
-  
- 
-  Serial.println("request received");
+  //Serial.println("request received");
 }
 
 // THIS PACKAGES AND TRANSMITS DATA TO HUB
@@ -69,4 +74,21 @@ void writeData(char newData) {
   char data[] = {5, newData};
   int dataSize = sizeof(data);
   Wire.write(data, dataSize);
+}
+
+
+// CODE THAT EXECUTES WHEN DATA IS RECEIVED FROM MASTER
+void receiveEvent(int howMany) {
+  //Serial.println(howMany);
+  while (Wire.available()) { // loop through all but the last
+    char c = Wire.read(); // receive byte as a character
+    //Serial.println(int(c));
+    //if (int(c) < 2) {
+      
+      digitalWrite(ledPin, HIGH);
+      Serial.println(int(c));
+    //}
+
+  }
+  digitalWrite(ledPin, LOW);
 }
